@@ -1,4 +1,4 @@
-﻿$file = Read-Host 'Enter the path of the csv file'
+$file = Read-Host 'Enter the path of the csv file'
 $reps = import-csv $file
 foreach ($rep in $reps) {
 $user = get-aduser $rep.name -Properties mobile
@@ -11,3 +11,5 @@ if ($has_mobile -eq $null) {
     Set-ADUser $user -mobile $mobile >> C:\users\kmiller\Desktop\numbersadded.txt
  }
 }
+
+rm $file
