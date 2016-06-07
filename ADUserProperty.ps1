@@ -21,6 +21,8 @@ The content that you will be parsing through
 
 .PROPERTY property
 The AD Property you want to return
+
+REPLACE <DOMAIN> with just the domain name (no suffix)
 #>
     param([Parameter(Mandatory=$True,
         HelpMessage="Enter the email header information")]
@@ -30,7 +32,7 @@ The AD Property you want to return
         [string]$property = 'Enabled',
 
         [string]$regex = $False,
-        [string]$regexpattern = "\w+(?=@waxie\.com)"
+        [string]$regexpattern = "\w+(?=@<DOMAIN>\.com)"
         )
 
     if ($regex -eq $True) {
