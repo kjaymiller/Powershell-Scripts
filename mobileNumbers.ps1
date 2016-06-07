@@ -10,7 +10,4 @@ if ($has_mobile -eq $null) {
     write-host "Setting $name mobile number to $mobile$"
     Set-ADUser $user -mobile $mobile >> C:\users\kmiller\Desktop\numbersadded.txt
  }
-else {
-    write-host "$name already has number"
-}
 }
