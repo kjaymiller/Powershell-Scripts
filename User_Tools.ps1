@@ -15,15 +15,14 @@
 
         $userchk = $firstname[0] + $mi +$lastname + $iter
         $adsearch = @(get-aduser -filter {samaccountname -like $userchk})
-            if ($mi -eq "") {
-            $mi = $middleinitial
-            }
-            else {
-                $mi = ""
+        if ($mi -eq "" -and $incr -eq 0){
+                $mi = $middleinitial
                 }
-                if ($incr -lt 2){
-                $incr += 2}
-                else {$icnr += 1}
+                else{
+                    if ($incr -lt 2){
+                        $incr += 2}
+                    else {$icnr += 1}
+                    }
                 }
     Until(($adsearch.count -eq 0) -or ($incr -eq 10))
     return $userchk.ToLower()
